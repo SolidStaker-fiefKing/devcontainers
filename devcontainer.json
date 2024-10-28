@@ -1,0 +1,17 @@
+{
+  "name": "Rust Ubuntu devCon",
+  "dockerFile": "../Rbuntu22.dockerfile",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "rust-lang.rust-analyzer",
+    "ms-vscode.cpptools",
+    "serayuzgur.crates",
+    "bungcip.better-toml"
+  ],
+  "postCreateCommand": "cargo new ringCentral && cd ringCentral && git init",
+  "workspaceFolder": "/usr/src/projectSpace/"
+}
+
+

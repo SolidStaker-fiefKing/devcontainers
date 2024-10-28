@@ -1,0 +1,31 @@
+{
+    "name": "Rust Ubuntu ringCentral",
+    "image": "casey2n1tech/private_rubuntu:latest",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash"
+        },
+        "extensions": [
+          "rust-lang.rust-analyzer",
+          "ms-vscode.cpptools",
+          "serayuzgur.crates",
+          "bungcip.better-toml",
+          "dbaeumer.vscode-eslint",                
+          "esbenp.prettier-vscode",                
+          "ms-vscode.vscode-node-azure-pack",      
+          "ms-azuretools.vscode-docker",           
+          "mhutchie.git-graph",                    
+          "eamodio.gitlens",                       
+          "ms-vscode-remote.remote-containers",    
+          "ms-vscode-remote.remote-wsl",           
+          "ms-vscode-remote.remote-ssh",           
+          "humao.rest-client",                     
+          "redhat.vscode-yaml"                     
+        ]
+      }
+    },
+    "postCreateCommand": "git init && cargo new ringCentral",
+    "workspaceFolder": "/usr/src/ringCentral"
+  }
+  
