@@ -1,9 +1,6 @@
 {
     "name": "Node.js Ubunt24 dckrDev w-Rust",
-    "build": {
-        "dockerfile": "../Noduntu24rs.Dockerfile",
-        "context": "."
-    },
+    "image": "casey2n1tech/node-js_ubuntu24_rs:base",
     "customizations": {
         "vscode": {
             "settings": {
@@ -29,7 +26,7 @@
         }
     },
     "postCreateCommand": [],
-    "remoteUser": "vscode",
+    "workspaceFolder": "/usr/src/projectSpace",
     "mounts": [
         "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
     ],
