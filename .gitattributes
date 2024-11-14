@@ -1,0 +1,7 @@
+# Ensure all text files use LF line endings in the repository
+* text=auto eol=lf
+
+# Specify binary files to prevent Git from modifying them
+*.png binary
+*.jpg binary
+*.exe binary
