@@ -25,7 +25,6 @@
         ]
       }
     },
-    "postCreateCommand": "git init && cargo new ringCentral",
+    "postCreateCommand": "cargo new ringCentral && cd ringCentral && git init",
     "workspaceFolder": "/usr/src/ringCentral"
   }
-  
