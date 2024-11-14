@@ -1,0 +1,38 @@
+{
+    "name": "Node.js Ubunt24 dckrDev w-Rust",
+    "build": {
+        "dockerfile": "../Noduntu24rs.Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                }
+            },
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "tamasfe.even-better-toml",
+                "rust-lang.rust-analyzer",
+                "vscode-icons-team.vscode-icons",
+                "christian-kohler.npm-intellisense",
+                "patryk.rust-extension-pack",
+                "richie5um2.vscode-sort-json",
+                "vscode-json-editor.vscode-json-editor"
+            ]
+        }
+    },
+    "postCreateCommand": [],
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
+    ],
+    "forwardPorts": [3000],
+    "shutdownAction": "stopContainer"
+}    
