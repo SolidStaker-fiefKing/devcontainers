@@ -1,4 +1,4 @@
-# Node.js on Ubuntu 24.04 LTS + Rust & PowerShell
+# Node.js on Ubuntu 24.04 LTS + Rust for heavy logical analytics
 FROM ubuntu:24.04
 
 # Set environment variables to avoid prompts during installation
