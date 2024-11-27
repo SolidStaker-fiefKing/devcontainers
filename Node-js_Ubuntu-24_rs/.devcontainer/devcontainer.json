@@ -1,6 +1,6 @@
 {
-    "name": "Node.js Ubunt24 dkrDev w-Rust",
-    "image": "casey2n1tech/NojUn24_rps2:base",
+    "name": "Node.js Ubunt24 dckrDev w-Rust",
+    "image": "casey2n1tech/node-js_ubuntu24_rs:base",
     "customizations": {
         "vscode": {
             "settings": {
@@ -9,10 +9,6 @@
                 "terminal.integrated.profiles.linux": {
                     "bash": {
                         "path": "/bin/bash"
-            },
-            "PowerShell": {
-                "path": "/usr/bin/pwsh",
-                "icon": "terminal-powershell"
                     }
                 }
             },
@@ -23,19 +19,14 @@
                 "rust-lang.rust-analyzer",
                 "vscode-icons-team.vscode-icons",
                 "christian-kohler.npm-intellisense",
-                "ms-dotnettools.vscode-dotnet-runtime",
                 "patryk.rust-extension-pack",
                 "richie5um2.vscode-sort-json",
                 "vscode-json-editor.vscode-json-editor"
             ]
         }
     },
-    "postCreateCommand": [
-        "pwsh -Command \"Install-PackageProvider -Name NuGet -Force\"",
-        "pwsh -Command \"Install-Module -Name Microsoft.Graph,PnP.PowerShell,ExchangeOnlineManagement,AzureAD,Az.Security,MicrosoftTeams,PowerShellGet -Force -AllowClobber -Scope AllUsers\""
-    ],
+    "postCreateCommand": [],
     "workspaceFolder": "/usr/src/projectSpace",
-    "remoteUser": "vscode",
     "mounts": [
         "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
     ],
