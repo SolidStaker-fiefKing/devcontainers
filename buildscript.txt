@@ -1,0 +1,2 @@
+docker build casey2n1tech/nojS_ubun22_rpk:api -f NoJS_Ubun22_rpk.Dockerfile .
+

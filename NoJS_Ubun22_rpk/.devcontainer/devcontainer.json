@@ -1,0 +1,73 @@
+{
+    "name": "NodeJS Ubunt22 Rust/Pwsh-SDK",
+    "image": "casey2n1tech/nojs_ubun22_rpk:api",
+    "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    },
+                    "PowerShell": {
+                        "path": "/usr/bin/pwsh",
+                        "icon": "terminal-powershell"
+                    }
+                }
+            },
+            "extensions": [
+                // **Code Formatting and Linting**
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "richie5um2.vscode-sort-json",
+                "vscode-json-editor.vscode-json-editor",
+                "redhat.vscode-yaml",
+                // **Language Support**
+                "tamasfe.even-better-toml",
+                "rust-lang.rust-analyzer",
+                "patryk.rust-extension-pack",
+                "serayuzgur.crates",
+                "ms-vscode.cpptools",
+                "christian-kohler.npm-intellisense",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-vscode.powershell",
+                // **Azure and Microsoft Tools**
+                "ms-vscode.vscode-node-azure-pack",
+                "ms-azuretools.vscode-docker",
+                "ms-azuretools.vscode-azurefunctions",
+                "ms-azuretools.vscode-azurestorage",
+                "ms-azuretools.vscode-azureappservice",
+                "ms-vscode.azure-account",
+                "ms-azuretools.vscode-azurekeyvault",
+                "ms-azuretools.vscode-azurecli",
+                "msazurermtools.azurerm-vscode-tools",
+                // **Version Control and Git**
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                // **Remote Development**
+                "ms-vscode.remote-explorer",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                // **Utilities**
+                "vscode-icons-team.vscode-icons",
+                "mechatroner.rainbow-csv",
+                "humao.rest-client",
+                "visualstudioexptteam.vscodeintellicode"
+            ]
+        }
+    },
+    "postCreateCommand": [
+        "pwsh -Command \"Install-PackageProvider -Name NuGet -Force\"",
+        "pwsh -Command \"Install-Module -Name Microsoft.Graph,PnP.PowerShell,ExchangeOnlineManagement,AzureAD,Az.Security,MicrosoftTeams,PowerShellGet -Force -AllowClobber -Scope AllUsers\""
+    ],
+    "workspaceFolder": "/usr/src/projectSpace",
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
+    ],
+    "forwardPorts": [
+        3000
+    ],
+    "shutdownAction": "stopContainer"
+}
