@@ -24,3 +24,20 @@ git config --global user.name "Your Name"
 # Set the Git user email
 git config --global user.email "your-email@example.com"
 ```
+
+### Docker commands
+
+```Powershell
+# Build an image from a docker file
+docker build -t nojs_ubun22_rpk:apiready -f NoJS_Ubun22_rpk\NoJS_Ubun22_rpk.Dockerfile .
+
+# Ensure authentication
+docker login
+
+# Prepare to push by tagging remote image from the local image
+docker tag nojs_ubun22_rpk:apiready casey2n1tech/nojs_ubun22_rpk:apiready
+
+# Push an image
+docker push casey2n1tech/nojs_ubun22_rpk:apiready
+```
+
