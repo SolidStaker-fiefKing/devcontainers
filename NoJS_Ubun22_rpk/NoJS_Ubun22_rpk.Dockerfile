@@ -73,13 +73,13 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash && \
     rm -rf /var/lib/apt/lists/*
 
 # Create non-privileged user account
-RUN useradd -ms /bin/bash vscode
+RUN useradd -ms /bin/bash vsuser
 
-# Add vscode to sudoers
-RUN echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/vscode && chmod 440 /etc/sudoers.d/vscode
+# Add vsuser to sudoers
+RUN echo "vsuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/vscode && chmod 440 /etc/sudoers.d/vscode
 
 # Configure Git with provided arguments
-USER vscode
+USER vsuser
 RUN git config --global user.name "${GIT_USERNAME}" && \
     git config --global user.email "${GIT_EMAIL}"
 
