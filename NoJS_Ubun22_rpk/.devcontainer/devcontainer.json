@@ -18,13 +18,11 @@
                 }
             },
             "extensions": [
-                // **Code Formatting and Linting**
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
                 "richie5um2.vscode-sort-json",
                 "vscode-json-editor.vscode-json-editor",
                 "redhat.vscode-yaml",
-                // **Language Support**
                 "tamasfe.even-better-toml",
                 "rust-lang.rust-analyzer",
                 "patryk.rust-extension-pack",
@@ -33,7 +31,6 @@
                 "christian-kohler.npm-intellisense",
                 "ms-dotnettools.vscode-dotnet-runtime",
                 "ms-vscode.powershell",
-                // **Azure and Microsoft Tools**
                 "ms-vscode.vscode-node-azure-pack",
                 "ms-azuretools.vscode-docker",
                 "ms-azuretools.vscode-azurefunctions",
@@ -43,13 +40,10 @@
                 "ms-azuretools.vscode-azurekeyvault",
                 "ms-azuretools.vscode-azurecli",
                 "msazurermtools.azurerm-vscode-tools",
-                // **Version Control and Git**
                 "eamodio.gitlens",
                 "mhutchie.git-graph",
-                // **Remote Development**
                 "ms-vscode.remote-explorer",
                 "ms-vscode-remote.vscode-remote-extensionpack",
-                // **Utilities**
                 "vscode-icons-team.vscode-icons",
                 "mechatroner.rainbow-csv",
                 "humao.rest-client",
@@ -58,16 +52,21 @@
         }
     },
     "postCreateCommand": [
-        "pwsh -Command \"Install-PackageProvider -Name NuGet -Force\"",
-        "pwsh -Command \"Install-Module -Name Microsoft.Graph,PnP.PowerShell,ExchangeOnlineManagement,AzureAD,Az.Security,MicrosoftTeams,PowerShellGet -Force -AllowClobber -Scope AllUsers\""
+        "sh -c \"echo 'PostCreateCommand Debug: SHELL=\\$SHELL PATH=\\$PATH USER=\\$USER' > /tmp/debug.log\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-PackageProvider -Name NuGet -Force' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name Microsoft.Graph -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name PnP.PowerShell -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name ExchangeOnlineManagement -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name AzureAD -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name Az.Security -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name MicrosoftTeams -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
+        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\""
     ],
     "workspaceFolder": "/usr/src/projectSpace",
-    "remoteUser": "vscode",
+    "remoteUser": "vsuser",
     "mounts": [
         "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
     ],
-    "forwardPorts": [
-        3000
-    ],
+    "forwardPorts": [3000],
     "shutdownAction": "stopContainer"
 }

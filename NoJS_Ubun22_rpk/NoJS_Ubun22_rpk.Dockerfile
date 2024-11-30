@@ -11,7 +11,13 @@ ARG GIT_EMAIL
 # Install necessary tools and dependencies
 RUN apt-get update && \
     apt-get install -y \
+        sudo\
         curl \
+        coreutils\
+        vim \
+        less \
+        net-tools \
+        iputils-ping \
         build-essential \
         python3-minimal \
         software-properties-common \
@@ -68,6 +74,9 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash && \
 
 # Create non-privileged user account
 RUN useradd -ms /bin/bash vscode
+
+# Add vscode to sudoers
+RUN echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/vscode && chmod 440 /etc/sudoers.d/vscode
 
 # Configure Git with provided arguments
 USER vscode
