@@ -67,6 +67,19 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
     apt-get install -y powershell && \
     rm -rf /var/lib/apt/lists/*
 
+# Pre-configure and install PowerShell modules
+RUN pwsh -Command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
+    Register-PackageSource -Name nuget.org -ProviderName NuGet -Location 'https://api.nuget.org/v3/index.json' -Trusted; \
+    Get-PackageProvider | where name -eq 'nuget' | Install-PackageProvider -Force; \
+    Install-Module -Name Microsoft.Graph -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name PnP.PowerShell -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name ExchangeOnlineManagement -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name AzureAD -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name Az.Security -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name MicrosoftTeams -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers; \
+    Install-Module -Name Az -Force -AllowClobber -Scope AllUsers;"
+
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash && \
     apt-get install -y azure-cli && \

@@ -1,7 +1,6 @@
 {
     "name": "NodeJS Ubunt22 Rust/Pwsh-SDK",
     "image": "casey2n1tech/nojs_ubun22_rpk:apiready",
-    "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
     "customizations": {
         "vscode": {
             "settings": {
@@ -51,22 +50,13 @@
             ]
         }
     },
-    "postCreateCommand": [
-        "sh -c \"echo 'PostCreateCommand Debug: SHELL=\\$SHELL PATH=\\$PATH USER=\\$USER' > /tmp/debug.log\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-PackageProvider -Name NuGet -Force' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name Microsoft.Graph -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name PnP.PowerShell -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name ExchangeOnlineManagement -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name AzureAD -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name Az.Security -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name MicrosoftTeams -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\"",
-        "sh -c \"sudo /usr/bin/pwsh -Command 'Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers' >> /tmp/debug.log 2>&1\""
-    ],
+   "postCreateCommand": [],
     "workspaceFolder": "/usr/src/projectSpace",
     "remoteUser": "vsuser",
     "mounts": [
         "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
     ],
+    "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
     "forwardPorts": [3000],
     "shutdownAction": "stopContainer"
 }
