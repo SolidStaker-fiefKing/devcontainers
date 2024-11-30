@@ -1,6 +1,6 @@
 {
     "name": "NodeJS Ubunt22 Rust/Pwsh-SDK",
-    "image": "casey2n1tech/nojs_ubun22_rpk:api",
+    "image": "casey2n1tech/nojs_ubun22_rpk:apiready",
     "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
     "customizations": {
         "vscode": {
