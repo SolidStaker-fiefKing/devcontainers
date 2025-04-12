@@ -33,7 +33,7 @@ RUN apt-get update && \
 # Install GitHub CLI (gh)
 ENV CI=1
 RUN curl https://release.solana.com/v1.18.26/install | sh -s && \
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -y && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s && \
     source $HOME/.cargo/env && \
     cargo install --git https://github.com/project-serum/anchor --tag v0.26.0 anchor-cli --locked && \
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
@@ -53,7 +53,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 RUN node -v && npm -v
 
 # Install Rust using rustup
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl https://sh.rustup.rs -sSf | sh -s
 
 # Ensure cargo and rust are added to PATH
 ENV PATH="/root/.cargo/bin:/root/.local/share/solana/install/active_release/bin:${PATH}"
