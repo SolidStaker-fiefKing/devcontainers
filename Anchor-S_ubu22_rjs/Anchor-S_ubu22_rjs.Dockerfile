@@ -31,7 +31,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install GitHub CLI (gh)
-RUN curl https://release.solana.com/stable/install | sh && \
+RUN curl https://release.solana.com/v1.14.11/install | sh && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && \
     source $HOME/.cargo/env && \
     cargo install --git https://github.com/project-serum/anchor --tag v0.26.0 anchor-cli --locked && \
@@ -69,7 +69,7 @@ RUN rustup update && \
 RUN cargo install --git https://github.com/project-serum/anchor anchor-cli --locked
 
 # Install the Solana CLI using the official installer script
-RUN sh -c "$(curl -sSfL https://release.solana.com/stable/install)" && \
+RUN sh -c "$(curl -sSfL https://release.solana.com/v1.14.11/install)" && \
     rm -rf /var/lib/apt/lists/*
 # Ensure the Solana CLI is available in PATH
 ENV PATH="/root/.local/share/solana/install/active_release/bin:${PATH}"
