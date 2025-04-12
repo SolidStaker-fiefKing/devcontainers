@@ -53,10 +53,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 RUN node -v && npm -v
 
 # Install Rust using rustup
-RUN curl https://sh.rustup.rs -sSf | sh -s
+#RUN curl https://sh.rustup.rs -sSf | sh -s -y
 
 # Ensure cargo and rust are added to PATH
-ENV PATH="/root/.cargo/bin:/root/.local/share/solana/install/active_release/bin:${PATH}"
+#ENV PATH="/root/.cargo/bin:/root/.local/share/solana/install/active_release/bin:${PATH}"
 
 # Add required Rust components and the BPF target for Solana/Anchor development
 RUN rustup update && \
