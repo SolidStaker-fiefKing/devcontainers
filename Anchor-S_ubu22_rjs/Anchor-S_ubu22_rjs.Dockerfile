@@ -32,7 +32,7 @@ RUN apt-get update && \
 
 # Install GitHub CLI (gh)
 ENV CI=1
-RUN curl https://release.solana.com/v1.14.11/install | sh -s -y && \
+RUN curl https://release.solana.com/v1.14.11/install | sh -s && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -y && \
     source $HOME/.cargo/env && \
     cargo install --git https://github.com/project-serum/anchor --tag v0.26.0 anchor-cli --locked && \
