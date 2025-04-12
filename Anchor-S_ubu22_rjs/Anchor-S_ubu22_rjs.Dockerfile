@@ -31,20 +31,18 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install GitHub CLI (gh)
-RUN curl https://release.solana.com/v1.14.11/install | sh && \
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && \
+ENV CI=1
+RUN curl https://release.solana.com/v1.14.11/install | sh -s -- -y && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $HOME/.cargo/env && \
     cargo install --git https://github.com/project-serum/anchor --tag v0.26.0 anchor-cli --locked && \
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
-    dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) \
-    signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] \
-    https://cli.github.com/packages stable main" | \
-    tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
     apt-get install -y gh && \
     rm -rf /var/lib/apt/lists/*
+
 
 # Install Node.js (20.x)
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
