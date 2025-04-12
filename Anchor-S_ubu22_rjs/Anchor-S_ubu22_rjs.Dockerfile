@@ -53,7 +53,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 RUN node -v && npm -v
 
 # Install Rust using rustup
-RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Ensure cargo and rust are added to PATH
 ENV PATH="/root/.cargo/bin:/root/.local/share/solana/install/active_release/bin:${PATH}"
