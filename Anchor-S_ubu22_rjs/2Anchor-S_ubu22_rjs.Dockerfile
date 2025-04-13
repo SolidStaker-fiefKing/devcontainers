@@ -36,40 +36,10 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | d
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
     apt-get install -y gh && \
-    rm -rf /var/lib/apt/lists/*
-    #curl https://release.solana.com/v1.18.26/install | bash -s -y && \
-    #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -y && \
-    #cargo install --git https://github.com/project-serum/anchor --tag v0.26.0 anchor-cli --locked && \
-    #source $HOME/.cargo/env && \
-
-
-# Install Node.js (20.x)
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
-
-# Verify Node.js and npm installation
-RUN node -v && npm -v
-
-# Install Rust using rustup
-#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
-
-# Ensure cargo and rust are added to PATH
-#ENV PATH="/root/.cargo/bin:/root/.local/share/solana/install/active_release/bin:${PATH}"
-
-# Add required Rust components and the BPF target for Solana/Anchor development
-#RUN rustup update && \
-#   rustup component add llvm-tools-preview && \
-#  rustup target add bpfel-unknown-unknown
-
-# Install the Anchor CLI from its GitHub repository (this may take some time)
-#RUN cargo install --git https://github.com/project-serum/anchor anchor-cli --locked
-
-# Install the Solana CLI using the official installer script
-#RUN sh -c "$(curl -sSfL https://release.solana.com/v1.18.26/install)" && \
-#    rm -rf /var/lib/apt/lists/*
-# Ensure the Solana CLI is available in PATH
-#ENV PATH="/root/.local/share/solana/install/active_release/bin:${PATH}"
+    rm -rf /var/lib/apt/lists/* && \
+    curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash && \
+    # Verify Node.js and npm installation
+    node -v && npm -v
 
 # Create a non-privileged developer user account
 RUN useradd -ms /bin/bash devuser && \

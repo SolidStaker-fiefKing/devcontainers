@@ -1,6 +1,6 @@
 {
-    "name": "Solana Worker",
-    "image": "solidstaker/anchor-s_ubu22_rjs:solana",
+    "name": "Solana Explore",
+    "image": "solidstaker/anchor-s_ubu22_rjs:explore@sha256:c1394912ea5f3143801ee6c2b0aef05284fb0609415090eeeae643a51c7e68a4",
     "customizations": {
         "vscode": {
             "settings": {
@@ -46,7 +46,7 @@
     "workspaceFolder": "/usr/src/projectSpace",
     "remoteUser": "devuser",
     "mounts": [
-        "source=v00_DATA,target=/usr/src/projectSpace,type=volume"
+        "source=v01_DATA,target=/usr/src/projectSpace,type=volume"
     ],
     "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
     "forwardPorts": [3000],
