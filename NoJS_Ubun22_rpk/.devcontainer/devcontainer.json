@@ -1,0 +1,62 @@
+{
+    "name": "NodeJS Ubunt22 Rust/Pwsh-SDK",
+    "image": "casey2n1tech/nojs_ubun22_rpk:apiready",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    },
+                    "PowerShell": {
+                        "path": "/usr/bin/pwsh",
+                        "icon": "terminal-powershell"
+                    }
+                }
+            },
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "richie5um2.vscode-sort-json",
+                "vscode-json-editor.vscode-json-editor",
+                "redhat.vscode-yaml",
+                "tamasfe.even-better-toml",
+                "rust-lang.rust-analyzer",
+                "patryk.rust-extension-pack",
+                "serayuzgur.crates",
+                "ms-vscode.cpptools",
+                "christian-kohler.npm-intellisense",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-vscode.powershell",
+                "ms-vscode.vscode-node-azure-pack",
+                "ms-azuretools.vscode-docker",
+                "ms-azuretools.vscode-azurefunctions",
+                "ms-azuretools.vscode-azurestorage",
+                "ms-azuretools.vscode-azureappservice",
+                "ms-vscode.azure-account",
+                "ms-azuretools.vscode-azurekeyvault",
+                "ms-azuretools.vscode-azurecli",
+                "msazurermtools.azurerm-vscode-tools",
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                "ms-vscode.remote-explorer",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "vscode-icons-team.vscode-icons",
+                "mechatroner.rainbow-csv",
+                "humao.rest-client",
+                "visualstudioexptteam.vscodeintellicode"
+            ]
+        }
+    },
+   "postCreateCommand": [],
+    "workspaceFolder": "/usr/src/projectSpace",
+    "remoteUser": "vsuser",
+    "mounts": [
+        "source=vs-docker_ccc,target=/usr/src/projectSpace,type=volume"
+    ],
+    "postStartCommand": "git config --global user.name '${localEnv:GIT_USERNAME}' && git config --global user.email '${localEnv:GIT_EMAIL}'",
+    "forwardPorts": [3000],
+    "shutdownAction": "stopContainer"
+}
