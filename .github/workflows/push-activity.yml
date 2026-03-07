@@ -1,0 +1,18 @@
+name: Push Activity
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  log-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Log push event
+        run: |
+          echo "Push received on branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Pushed by: ${{ github.actor }}"
